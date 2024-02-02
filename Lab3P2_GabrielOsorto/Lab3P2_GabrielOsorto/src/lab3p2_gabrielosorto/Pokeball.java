@@ -1,9 +1,10 @@
 package lab3p2_gabrielosorto;
 
 public class Pokeball {
-private String Color;
-private int NumeroSerie;
-private int EficienciaAtrapado;
+
+    private String Color;
+    private int NumeroSerie;
+    private int EficienciaAtrapado;
 
     public Pokeball(String Color, int NumeroSerie, int EficienciaAtrapado) {
         this.Color = Color;
@@ -34,6 +35,5 @@ private int EficienciaAtrapado;
     public void setEficienciaAtrapado(int EficienciaAtrapado) {
         this.EficienciaAtrapado = EficienciaAtrapado;
     }
-
 
 }

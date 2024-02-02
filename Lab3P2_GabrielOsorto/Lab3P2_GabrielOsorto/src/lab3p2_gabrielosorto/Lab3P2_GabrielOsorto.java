@@ -19,6 +19,7 @@ public class Lab3P2_GabrielOsorto {
         int op = sc.nextInt();
         switch (op) {
             case 1:
+                Case1();
                 break;
             case 2:
                 break;
@@ -35,6 +36,10 @@ public class Lab3P2_GabrielOsorto {
             default:
                 break;
         }
+    }
+
+    public static void Case1() {
+
     }
 
 }

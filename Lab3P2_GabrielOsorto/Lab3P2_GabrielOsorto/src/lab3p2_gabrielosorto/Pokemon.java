@@ -2,16 +2,18 @@ package lab3p2_gabrielosorto;
 
 public class Pokemon {
 
-    String NombrePokemon;
-    int NumEntradaPokedex;
-    String Naturaleza;
-    Boolean Capturado;
+    private String NombrePokemon;
+    private int NumEntradaPokedex;
+    private String Naturaleza;
+    private Boolean Capturado;
+    private Pokeball Pokebola;
 
-    public Pokemon(String NombrePokemon, int NumEntradaPokedex, String Naturaleza, Boolean Capturado) {
+    public Pokemon(String NombrePokemon, int NumEntradaPokedex, String Naturaleza, Boolean Capturado, Pokeball Pokebola) {
         this.NombrePokemon = NombrePokemon;
         this.NumEntradaPokedex = NumEntradaPokedex;
         this.Naturaleza = Naturaleza;
         this.Capturado = Capturado;
+        this.Pokebola = Pokebola;
     }
 
     public String getNombrePokemon() {
@@ -44,6 +46,14 @@ public class Pokemon {
 
     public void setCapturado(Boolean Capturado) {
         this.Capturado = Capturado;
+    }
+
+    public Pokeball getPokebola() {
+        return Pokebola;
+    }
+
+    public void setPokebola(Pokeball Pokebola) {
+        this.Pokebola = Pokebola;
     }
 
     @Override
