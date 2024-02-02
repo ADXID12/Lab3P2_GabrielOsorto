@@ -144,7 +144,7 @@ public class Lab3P2_GabrielOsorto {
             for (int i = 0; i < pokes.size(); i++) {
                 Pokemon poks = pokes.get(i);
                 if (poks instanceof GrassType) {
-                    System.out.println("Nombre:" + poks.getNombrePokemon() + "\nNo. Pokedex:" + poks.getNumEntradaPokedex() + "\nNaturaleza:" + poks.getNaturaleza() + "\nCapturado:" + poks.getCapturado() + "\nPokebola donde esta atrapado:" + poks.getPokebola() + "\nHabitat:"+((GrassType) poks).getEcosistema()+"\nNivel de dominio sobre las plantas:"+((GrassType) poks).getPoderSobrePlantas());
+                    System.out.println("Nombre:" + poks.getNombrePokemon() + "\nNo. Pokedex:" + poks.getNumEntradaPokedex() + "\nNaturaleza:" + poks.getNaturaleza() + "\nCapturado:" + poks.getCapturado() + "\nPokebola donde esta atrapado:" + poks.getPokebola() + "\nHabitat:" + ((GrassType) poks).getEcosistema() + "\nNivel de dominio sobre las plantas:" + ((GrassType) poks).getPoderSobrePlantas());
                 }
             }
             System.out.println("");
@@ -155,11 +155,36 @@ public class Lab3P2_GabrielOsorto {
         System.out.print("Ingrese que tipo de Pokemon desea eliminar(Grass/Fire/Water):");
         String opEliminar = lt.nextLine();
         if (opEliminar.equalsIgnoreCase("fire")) {
+            System.out.println("===================");
+            System.out.println("Pokemones tipo Fire");
 
+            for (int i = 0; i < pokes.size(); i++) {
+                Pokemon poks = pokes.get(i);
+                if (poks instanceof FireType) {
+                    System.out.println(i + 1 + ". Nombre:" + poks.getNombrePokemon() + "\nNo. Pokedex:" + poks.getNumEntradaPokedex());
+                }
+            }
+            System.out.println("===================");
         } else if (opEliminar.equalsIgnoreCase("grass")) {
-
+            System.out.println("===================");
+            System.out.println("Pokemon tipo Water");
+            for (int i = 0; i < pokes.size(); i++) {
+                Pokemon poks = pokes.get(i);
+                if (poks instanceof WaterType) {
+                    System.out.println(i + 1 + ". Nombre:" + poks.getNombrePokemon() + "\nNo. Pokedex:" + poks.getNumEntradaPokedex());
+                }
+            }
+            System.out.println("===================");
         } else if (opEliminar.equalsIgnoreCase("water")) {
-
+            System.out.println("===================");
+            System.out.println("Pokemon tipo Grass");
+            for (int i = 0; i < pokes.size(); i++) {
+                Pokemon poks = pokes.get(i);
+                if (poks instanceof GrassType) {
+                    System.out.println(i + 1 + ". Nombre:" + poks.getNombrePokemon() + "\nNo. Pokedex:" + poks.getNumEntradaPokedex());
+                }
+            }
+            System.out.println("===================");
         }
     }
 }
