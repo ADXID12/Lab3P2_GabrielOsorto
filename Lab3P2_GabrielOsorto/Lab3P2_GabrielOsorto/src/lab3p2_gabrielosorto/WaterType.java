@@ -26,5 +26,6 @@ public class WaterType extends Pokemon {
     public void setRapidezNadar(int RapidezNadar) {
         this.RapidezNadar = RapidezNadar;
     }
+    
 
 }
