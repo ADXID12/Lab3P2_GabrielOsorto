@@ -1,11 +1,13 @@
 package lab3p2_gabrielosorto;
 
+import static java.lang.Math.random;
 import java.util.*;
 
 public class Lab3P2_GabrielOsorto {
 
     static Scanner sc = new Scanner(System.in);
     static Scanner lt = new Scanner(System.in);
+    static Random ran = new Random();
     static ArrayList<Pokemon> pokes = new ArrayList<>();
     static ArrayList<Pokeball> pokebolas = new ArrayList<>();
 
@@ -224,7 +226,72 @@ public class Lab3P2_GabrielOsorto {
         System.out.println("=========");
         for (int i = 0; i < pokebolas.size(); i++) {
             Pokeball listaPokebolas = pokebolas.get(i);
-            System.out.println(i + 1 + "Color: " + listaPokebolas.getColor());
+            System.out.println(i + 1 + ". Color: " + listaPokebolas.getColor());
+        }
+        System.out.println("");
+        System.out.print("Seleccione una Pokebola:");
+        int PokeSeleccionada = sc.nextInt();
+        if (PokeSeleccionada < 0 || PokeSeleccionada > pokebolas.size()) {
+            System.out.println("Posicion no disponible");
+        } else {
+            if (pokes.isEmpty()) {
+                System.out.println("No hay pokemones disponibles");
+            } else {
+                int posiran = ran.nextInt(pokes.size());
+                Pokemon pokeCapt = pokes.get(posiran);
+                System.out.println("El pokemon " + pokeCapt.getNombrePokemon() + " ha aparecido");
+                System.out.print("Que desea hacer?\n1. Huir\n2. Atraparlo con la pokebola\nIngrese su opcion:");
+                int OpSimulacion = sc.nextInt();
+                if (OpSimulacion == 2) {
+                    int PosibilidadSimu = pokebolas.get(PokeSeleccionada).getEficienciaAtrapado();
+                    int posiRandom = 0;
+                    switch (PosibilidadSimu) {
+                        case 1:
+                            posiRandom = 1 + ran.nextInt(2);
+                            if (posiRandom == 1) {
+                                System.out.println("POKEMON CAPTURADO CON EXITOOOOOOOOOO");
+                                pokebolas.remove(PokeSeleccionada);
+                                pokes.get(posiran).setCapturado(Boolean.TRUE);
+                            } else {
+                                System.out.println("Pokemon no capturado :((((((");
+                                pokebolas.remove(PokeSeleccionada);
+                            }
+                            System.out.println("");
+                            break;
+                        case 2:
+                            posiRandom = 1 + ran.nextInt(2);
+                            if (posiRandom == 1 || posiRandom == 2) {
+                                System.out.println("POKEMON CAPTURADO CON EXITOOOOOOOOOO");
+                                pokebolas.remove(PokeSeleccionada);
+                                pokes.get(posiran).setCapturado(Boolean.TRUE);
+                            } else {
+                                System.out.println("Pokemon no capturado :((((((");
+                                pokebolas.remove(PokeSeleccionada);
+                            }
+                            System.out.println("");
+                            break;
+                        case 3:
+                            posiRandom = 1 + ran.nextInt(2);
+                            if (posiRandom < 3 || posiRandom > 0) {
+                                System.out.println("POKEMON CAPTURADO CON EXITOOOOOOOOOO");
+                                pokebolas.remove(PokeSeleccionada);
+                                pokes.get(posiran).setCapturado(Boolean.TRUE);
+                            } else {
+                                System.out.println("Pokemon no capturado :((((((");
+                                pokebolas.remove(PokeSeleccionada);
+                            }
+                            System.out.println("");
+                            break;
+                        default:
+                            System.out.println("No disponible");
+                            System.out.println("");
+                            break;
+                    }
+                } else {
+                    System.out.println("Pedazo de cobarde como va a huir de" + pokeCapt.getNombrePokemon() + " si es el peor Pokemon del universo, verguenza me das");
+                    System.out.println("");
+                }
+            }
         }
     }
 }
