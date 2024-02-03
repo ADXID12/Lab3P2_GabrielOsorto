@@ -1,6 +1,5 @@
 package lab3p2_gabrielosorto;
 
-import static java.lang.Math.random;
 import java.util.*;
 
 public class Lab3P2_GabrielOsorto {
@@ -22,6 +21,7 @@ public class Lab3P2_GabrielOsorto {
             System.out.println("5. Capturar Pokemon");
             System.out.println("6. Modificar Pokemon");
             System.out.println("7. Salir");
+            System.out.println("8. extra");
             System.out.print("Ingrese su opcion:");
             int op = sc.nextInt();
             System.out.println("");
@@ -36,16 +36,20 @@ public class Lab3P2_GabrielOsorto {
                     ListarPokemons();
                     break;
                 case 4:
-                    EliminarPokemon(pokes);
+                    EliminarPokemon();
                     break;
                 case 5:
                     AtraparPokehot();
                     break;
                 case 6:
+                    ModificarPoke();
                     break;
                 case 7:
                     System.out.println("Saliendo.....");
                     seguir = false;
+                    break;
+                case 8:
+                    extra();
                     break;
                 default:
                     System.out.println("OPCION NO VALIDA");
@@ -161,12 +165,11 @@ public class Lab3P2_GabrielOsorto {
         }
     }
 
-    public static void EliminarPokemon(ArrayList<Pokemon> pokemons) {
+    public static void EliminarPokemon() {
         System.out.print("Ingrese que tipo de Pokemon desea eliminar(Grass/Fire/Water):");
         String opEliminar = lt.nextLine();
         System.out.println("");
         if (opEliminar.equalsIgnoreCase("fire")) {
-            int bandera = 0;
             System.out.println("===================");
             System.out.println("Pokemones tipo Fire");
 
@@ -180,15 +183,7 @@ public class Lab3P2_GabrielOsorto {
             System.out.println("===================");
             System.out.println("Ingrese el indice del pokemon que desea eliminar:");
             int posi = sc.nextInt();
-            for (int i = 0; i < pokemons.size(); i++) {
-                Pokemon poks = pokemons.get(i);
-                if (poks instanceof FireType) {
-                    bandera++;
-                    if (posi == bandera) {
-                        pokemons.remove(posi);
-                    }
-                }
-            }
+            pokemons.remove(posi);
             //Fin eliminar pokemon tipo Fuego
 
         } else if (opEliminar.equalsIgnoreCase("water")) {
@@ -202,6 +197,9 @@ public class Lab3P2_GabrielOsorto {
                 System.out.println("");
             }
             System.out.println("===================");
+            System.out.println("Ingrese el indice del pokemon que desea eliminar:");
+            int posi = sc.nextInt();
+            pokemons.remove(posi);
             //fin eliminar pokemon tipo Agua
 
         } else if (opEliminar.equalsIgnoreCase("grass")) {
@@ -215,6 +213,9 @@ public class Lab3P2_GabrielOsorto {
                 System.out.println("");
             }
             System.out.println("===================");
+            System.out.println("Ingrese el indice del pokemon que desea eliminar:");
+            int posi = sc.nextInt();
+            pokemons.remove(posi);
         }
         System.out.println("");
     }
@@ -247,11 +248,12 @@ public class Lab3P2_GabrielOsorto {
                     int posiRandom = 0;
                     switch (PosibilidadSimu) {
                         case 1:
-                            posiRandom = 1 + ran.nextInt(2);
+                            posiRandom = 1 + ran.nextInt(3);
                             if (posiRandom == 1) {
                                 System.out.println("POKEMON CAPTURADO CON EXITOOOOOOOOOO");
                                 pokebolas.remove(PokeSeleccionada);
                                 pokes.get(posiran).setCapturado(Boolean.TRUE);
+                                pokes.get(posiran).setPokebola(pokebolas.get(PokeSeleccionada));
                             } else {
                                 System.out.println("Pokemon no capturado :((((((");
                                 pokebolas.remove(PokeSeleccionada);
@@ -259,11 +261,13 @@ public class Lab3P2_GabrielOsorto {
                             System.out.println("");
                             break;
                         case 2:
-                            posiRandom = 1 + ran.nextInt(2);
+                            posiRandom = 1 + ran.nextInt(3);
+
                             if (posiRandom == 1 || posiRandom == 2) {
                                 System.out.println("POKEMON CAPTURADO CON EXITOOOOOOOOOO");
                                 pokebolas.remove(PokeSeleccionada);
                                 pokes.get(posiran).setCapturado(Boolean.TRUE);
+                                pokes.get(posiran).setPokebola(pokebolas.get(PokeSeleccionada));
                             } else {
                                 System.out.println("Pokemon no capturado :((((((");
                                 pokebolas.remove(PokeSeleccionada);
@@ -271,11 +275,12 @@ public class Lab3P2_GabrielOsorto {
                             System.out.println("");
                             break;
                         case 3:
-                            posiRandom = 1 + ran.nextInt(2);
+                            posiRandom = 1 + ran.nextInt(3);
                             if (posiRandom < 3 || posiRandom > 0) {
                                 System.out.println("POKEMON CAPTURADO CON EXITOOOOOOOOOO");
                                 pokebolas.remove(PokeSeleccionada);
                                 pokes.get(posiran).setCapturado(Boolean.TRUE);
+                                pokes.get(posiran).setPokebola(pokebolas.get(PokeSeleccionada));
                             } else {
                                 System.out.println("Pokemon no capturado :((((((");
                                 pokebolas.remove(PokeSeleccionada);
@@ -293,5 +298,57 @@ public class Lab3P2_GabrielOsorto {
                 }
             }
         }
+    }
+
+public static void ModificarPoke() {
+    System.out.println("Lista de pokemones que puede modificar:");
+    
+    for (int i = 0; i < pokes.size(); i++) {
+        Pokemon pokesCapturados = pokes.get(i);
+       
+        if (pokesCapturados.getCapturado()) {
+            System.out.println(i + ". Nombre:" + pokesCapturados.getNombrePokemon() + "\nNo. Pokedex:" + pokesCapturados.getNumEntradaPokedex());
+        }
+    }
+
+    System.out.println("Pokemon modificado con éxito.");
+    System.out.println("");
+}
+
+
+    public static void extra() {
+        System.out.println("exta");
+        System.out.println("Oh, baby");
+        System.out.println("Oh, man");
+        System.out.println("You're makin' me crazy");
+        System.out.println("Really drivin' me mad");
+        System.out.println("That's alright with me");
+        System.out.println("It's really no fuss");
+        System.out.println("As long as you're next to me");
+        System.out.println("Just the two of us");
+
+        System.out.println("You're my, my, my, my kind of woman");
+        System.out.println("My, oh my, what a girl");
+        System.out.println("You're my, my, my, my kind of woman");
+        System.out.println("And I'm down on my hands and knees");
+        System.out.println("Beggin' you please, baby");
+        System.out.println("Show me your world");
+
+        System.out.println("Oh, brother");
+        System.out.println("Sweetheart");
+        System.out.println("I'm feelin' so tired");
+        System.out.println("Really fallin' apart");
+        System.out.println("And it just don't make sense to me");
+        System.out.println("I really don't know");
+        System.out.println("Why you stick right next to me");
+        System.out.println("Wherever I go");
+
+        System.out.println("You're my, my, my, my kind of woman");
+        System.out.println("My, oh my, what a girl");
+        System.out.println("You're my, my, my, my kind of woman");
+        System.out.println("And I'm down on my hands and knees");
+        System.out.println("Beggin' you please, baby");
+        System.out.println("Show me your world");
+        System.out.println("");
     }
 }
